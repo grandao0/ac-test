@@ -9,3 +9,4 @@ insert into IMAGE (id, image_type, product_id)
 values (1, 'png', 1);
 insert into IMAGE (id, image_type, product_id)
 values (2, 'gif', 2);
+--prompt 2 records loaded

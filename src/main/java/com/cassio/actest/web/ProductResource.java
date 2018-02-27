@@ -19,7 +19,7 @@ import com.cassio.actest.model.Product;
 import com.cassio.actest.repository.ProductRepository;
 
 @RestController
-@RequestMapping(path = "/api/products")
+@RequestMapping
 public class ProductResource {
 	@Autowired
 	private ProductRepository productRepository;
@@ -27,18 +27,18 @@ public class ProductResource {
 	private static final String SUCCESS = "success";
 	private static final String ERROR = "error";
 
-	@RequestMapping(method = RequestMethod.GET, path = "/findAll")
+	@RequestMapping(method = RequestMethod.GET, path = "/products")
 	public List<Product> findAll() {
 		return productRepository.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/findById/{id}")
+	@RequestMapping(method = RequestMethod.GET, path = "/products/{id}")
 	public Product findById(@PathVariable("id") Long id) {
 		return productRepository.findOne(id);
 	}
 
 	@Transactional
-	@RequestMapping(method = RequestMethod.POST, path = "/save", consumes = {"application/x-www-form-urlencoded"})
+	@RequestMapping(method = RequestMethod.POST, path = "/products")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> save(Product product) {
 		try {
@@ -56,7 +56,7 @@ public class ProductResource {
 	}
 
 	@Transactional
-	@RequestMapping(method = RequestMethod.POST, path = "/update")
+	@RequestMapping(method = RequestMethod.PUT, path = "/products")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> update(@RequestBody Product product) {
 		try {
@@ -74,7 +74,7 @@ public class ProductResource {
 	}
 
 	@Transactional
-	@RequestMapping(method = RequestMethod.POST, path = "/delete/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, path = "/products/{id}")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> deleteById(@PathVariable Long id) {
 		try {
