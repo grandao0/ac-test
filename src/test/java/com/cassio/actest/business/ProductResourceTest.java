@@ -25,9 +25,19 @@ public class ProductResourceTest {
 		List<Product> products = productResource.findAll();
 		assertFalse(products.isEmpty());
 		assertEquals(2, products.size());
-
-		// If you want to compare all the authors to what we inserted in
-		// '02-insert-data-authors.xml'
-		products.forEach(System.out::println);
+	}
+	
+	@Test
+	public void getProductById() throws Exception {
+		Product product = productResource.findById(1L);
+		assertFalse(product == null);
+		assertEquals("mouse", product.getName());
+	}
+	
+	@Test
+	public void deleteProductById() throws Exception {
+		productResource.deleteById(1L);
+		Product product = productResource.findById(1L);
+		assertFalse(product != null);
 	}
 }

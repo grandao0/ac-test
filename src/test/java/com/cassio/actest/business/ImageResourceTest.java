@@ -21,13 +21,23 @@ public class ImageResourceTest {
 	private ImageResource imageResource;
 
 	@Test
-	public void getAllProductsReturnsDataFromDatabase() throws Exception {
+	public void getAllImagesReturnsDataFromDatabase() throws Exception {
 		List<Image> images = imageResource.findAll();
 		assertFalse(images.isEmpty());
 		assertEquals(2, images.size());
+	}
 
-		// If you want to compare all the authors to what we inserted in
-		// '02-insert-data-authors.xml'
-		images.forEach(System.out::println);
+	@Test
+	public void getImageById() throws Exception {
+		Image image = imageResource.findById(1L);
+		assertFalse(image == null);
+		assertEquals("png", image.getImageType());
+	}
+
+	@Test
+	public void deleteImageById() throws Exception {
+		imageResource.deleteById(1L);
+		Image image = imageResource.findById(1L);
+		assertFalse(image != null);
 	}
 }
