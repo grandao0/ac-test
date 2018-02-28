@@ -8,7 +8,6 @@ create table PRODUCT
 )
 ;
 create unique index IDX_ID_PRODUCT on PRODUCT (ID);
-create unique index IDX_FK_PARENT_PRODUCT_ID on PRODUCT (PARENT_PRODUCT_ID);
 
 --prompt Creating IMAGE...
 create table IMAGE

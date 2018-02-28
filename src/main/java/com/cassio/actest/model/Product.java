@@ -3,7 +3,6 @@ package com.cassio.actest.model;
 import java.io.Serializable;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,7 +27,7 @@ public class Product implements Serializable {
 	@OneToMany(mappedBy = "product", orphanRemoval = true)
 	private Set<Image> images;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne
 	@JoinColumn(name = "parent_product_id")
 	private Product parent;
 
