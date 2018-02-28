@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.cassio.actest.model.Image;
 import com.cassio.actest.repository.ImageRepository;
 
+@Service
 public class ImageService {
 	@Autowired
 	private ImageRepository imageRepository;
@@ -30,6 +32,7 @@ public class ImageService {
 		try {
 			Map<String, Object> result = new HashMap<>();
 
+			image.setId(null);
 			imageRepository.saveAndFlush(image);
 			result.put(SUCCESS, true);
 
@@ -41,11 +44,15 @@ public class ImageService {
 		}
 	}
 
-	public ResponseEntity<Map<String, Object>> update(Image image) {
+	public ResponseEntity<Map<String, Object>> update(Image image, Long id) {
 		try {
 			Map<String, Object> result = new HashMap<>();
 
+			Image img = imageRepository.getOne(id);
+			img.setImageType(image.getImageType());
+			img.setProduct(image.getProduct());
 			imageRepository.saveAndFlush(image);
+
 			result.put(SUCCESS, true);
 
 			return new ResponseEntity<>(result, HttpStatus.OK);
