@@ -3,8 +3,10 @@ package com.cassio.actest.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,14 +19,14 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = -645220177165026821L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String name;
 
 	private String description;
 
-	@OneToMany(mappedBy = "product", orphanRemoval = true)
+	@OneToMany(mappedBy = "product", orphanRemoval = true, cascade = {CascadeType.ALL})
 	private Set<Image> images;
 
 	@ManyToOne

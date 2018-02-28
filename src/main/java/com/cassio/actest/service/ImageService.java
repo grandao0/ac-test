@@ -32,7 +32,6 @@ public class ImageService {
 		try {
 			Map<String, Object> result = new HashMap<>();
 
-			image.setId(null);
 			imageRepository.saveAndFlush(image);
 			result.put(SUCCESS, true);
 
@@ -48,10 +47,12 @@ public class ImageService {
 		try {
 			Map<String, Object> result = new HashMap<>();
 
-			Image img = imageRepository.getOne(id);
+			Image img = imageRepository.findOne(id);
 			img.setImageType(image.getImageType());
-			img.setProduct(image.getProduct());
-			imageRepository.saveAndFlush(image);
+			if (image.getProduct() != null) {
+				img.setProduct(image.getProduct());
+			}
+			imageRepository.saveAndFlush(img);
 
 			result.put(SUCCESS, true);
 

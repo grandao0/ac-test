@@ -9,7 +9,7 @@ insert into PRODUCT (id, name, description, parent_product_id)
 values (4, 'keyboard set', 'Microsoft keyboard Set', 2);
 insert into PRODUCT (id, name, description, parent_product_id)
 values (5, 'keyboard jumper', 'Microsoft keyboard Jumper', 2);
---prompt 3 records loaded
+--prompt 5 records loaded
 --prompt Loading IMAGE...
 insert into IMAGE (id, image_type, product_id)
 values (1, 'png', 1);
@@ -21,4 +21,4 @@ insert into IMAGE (id, image_type, product_id)
 values (4, 'bmp', 2);
 insert into IMAGE (id, image_type, product_id)
 values (5, 'svg', 2);
---prompt 3 records loaded
+--prompt 5 records loaded

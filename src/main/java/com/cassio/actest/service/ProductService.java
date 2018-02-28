@@ -59,12 +59,16 @@ public class ProductService {
 		try {
 			Map<String, Object> result = new HashMap<>();
 
-			Product pdct = productRepository.getOne(id);
+			Product pdct = productRepository.findOne(id);
 			pdct.setName(product.getName());
 			pdct.setDescription(product.getDescription());
-			pdct.setImages(product.getImages());
-			pdct.setParent(product.getParent());
-			productRepository.saveAndFlush(product);
+			if (product.getImages() != null) {
+				pdct.setImages(product.getImages());
+			}
+			if (product.getParent() != null) {
+				pdct.setParent(product.getParent());
+			}
+			productRepository.saveAndFlush(pdct);
 
 			result.put(SUCCESS, true);
 
