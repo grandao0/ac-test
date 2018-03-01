@@ -24,7 +24,28 @@ public class ProductServiceTest {
 	public void getAllProductsReturnsDataFromDatabase() throws Exception {
 		List<Product> products = productService.findAll();
 		assertFalse(products.isEmpty());
+		assertEquals(6, products.size());
+	}
+
+	@Test
+	public void getAllProductsExcluding() throws Exception {
+		List<Product> products = productService.findExcluding();
+		assertFalse(products.isEmpty());
 		assertEquals(5, products.size());
+	}
+
+	@Test
+	public void getProductExcludingById() throws Exception {
+		List<Product> products = productService.findExcludingById(1L);
+		assertFalse(products.isEmpty());
+		assertEquals(1, products.size());
+	}
+
+	@Test
+	public void getParentsById() throws Exception {
+		List<Product> products = productService.findByParentId(2L);
+		assertFalse(products.isEmpty());
+		assertEquals(3, products.size());
 	}
 
 	@Test
@@ -35,9 +56,30 @@ public class ProductServiceTest {
 	}
 
 	@Test
-	public void deleteProductById() throws Exception {
-		productService.deleteById(1L);
+	public void saveProduct() throws Exception {
+		Product product = new Product();
+		product.setDescription("test");
+		product.setName("test");
+		productService.save(product);
+		Product pdc = productService.findById(7L);
+		assertFalse(pdc == null);
+		assertEquals("test", pdc.getName());
+	}
+
+	@Test
+	public void updateProduct() throws Exception {
 		Product product = productService.findById(1L);
+		product.setName("updated");
+		productService.update(product, 1L);
+		Product pdc = productService.findById(1L);
+		assertFalse(pdc == null);
+		assertEquals("updated", pdc.getName());
+	}
+
+	@Test
+	public void deleteProductById() throws Exception {
+		productService.deleteById(6L);
+		Product product = productService.findById(6L);
 		assertFalse(product != null);
 	}
 }

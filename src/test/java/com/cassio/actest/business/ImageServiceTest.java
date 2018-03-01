@@ -28,6 +28,13 @@ public class ImageServiceTest {
 	}
 
 	@Test
+	public void getImageByProductId() throws Exception {
+		List<Image> images = imageService.findByProductId(1L);
+		assertFalse(images.isEmpty());
+		assertEquals(2, images.size());
+	}
+
+	@Test
 	public void getImageById() throws Exception {
 		Image image = imageService.findById(1L);
 		assertFalse(image == null);
@@ -35,9 +42,29 @@ public class ImageServiceTest {
 	}
 
 	@Test
-	public void deleteImageById() throws Exception {
-		imageService.deleteById(1L);
+	public void saveImage() throws Exception {
+		Image image = new Image();
+		image.setImageType("test");
+		imageService.save(image);
+		Image img = imageService.findById(8L);
+		assertFalse(img == null);
+		assertEquals("test", image.getImageType());
+	}
+
+	@Test
+	public void updateImage() throws Exception {
 		Image image = imageService.findById(1L);
+		image.setImageType("updated");
+		imageService.update(image, 1L);
+		Image img = imageService.findById(1L);
+		assertFalse(img == null);
+		assertEquals("updated", image.getImageType());
+	}
+
+	@Test
+	public void deleteImageById() throws Exception {
+		imageService.deleteById(4L);
+		Image image = imageService.findById(4L);
 		assertFalse(image != null);
 	}
 }
