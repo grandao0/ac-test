@@ -18,8 +18,6 @@ Quick summary
 
 * Version 1.0a
 
-* [avenuecode](https://bitbucket.org/grandao0/avenuecode)
-
 ### How do I get set up? ###
 
 * Summary of set up:
@@ -176,15 +174,3 @@ Quick summary
 * Repository owner and admin
 
 	cassio.babilonia at gmail.com
-
-### Mention anything that was asked but not delivered and why, and any additional comments ###
-
-First of all, I am happy with how cool it was to build and run some of the best features from spring boot, always working with JSON as is one of the best open-standard file formats to work with massive JavaScript front-ends requests.
-I used Swagger to help document and use the application calls in a fast and easy way.
-I had no time to build the front-end for this project but I would if I had more time as I know even a simple and poor one is better then none even though it was not asked in the test scenario.
-I lack the experience when it comes to writing automated tests as you can see but I did my best to make some tests cover what was most important as writing good tests is in my priority list of study (The company I work does not have automated tests in their codes).
-I did what I was asked to and I hope you will like it!
-
-Sincerely and hoping the best,
-
-Cassio Simoes.
