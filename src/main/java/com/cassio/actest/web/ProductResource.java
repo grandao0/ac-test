@@ -49,8 +49,8 @@ public class ProductResource {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/childs/{id}")
-	public List<Product> findChildsById(@PathVariable("id") Long id) {
-		return productService.findChildsById(id);
+	public List<Product> findByParentId(@PathVariable("id") Long id) {
+		return productService.findByParentId(id);
 	}
 
 	@Transactional

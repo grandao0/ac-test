@@ -24,7 +24,7 @@ public class ProductResourceTest {
 	public void getAllProductsReturnsDataFromDatabase() throws Exception {
 		List<Product> products = productResource.findAll();
 		assertFalse(products.isEmpty());
-		assertEquals(2, products.size());
+		assertEquals(5, products.size());
 	}
 	
 	@Test

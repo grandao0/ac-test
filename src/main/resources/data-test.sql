@@ -20,5 +20,9 @@ values (3, 'gif', 2);
 insert into IMAGE (id, image_type, product_id)
 values (4, 'bmp', 2);
 insert into IMAGE (id, image_type, product_id)
-values (5, 'svg', 2);
---prompt 5 records loaded
+values (5, 'svg', 3);
+insert into IMAGE (id, image_type, product_id)
+values (6, 'jpg', 4);
+insert into IMAGE (id, image_type, product_id)
+values (7, 'tiff', 5);
+--prompt 7 records loaded

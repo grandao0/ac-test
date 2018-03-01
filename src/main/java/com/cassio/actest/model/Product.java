@@ -26,7 +26,7 @@ public class Product implements Serializable {
 
 	private String description;
 
-	@OneToMany(mappedBy = "product", orphanRemoval = true, cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy = "product", orphanRemoval = true, cascade = { CascadeType.MERGE })
 	private Set<Image> images;
 
 	@ManyToOne

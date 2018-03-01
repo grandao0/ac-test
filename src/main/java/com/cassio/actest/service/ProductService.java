@@ -36,8 +36,8 @@ public class ProductService {
 		return productRepository.findExcludingById(id);
 	}
 
-	public List<Product> findChildsById(Long id) {
-		return productRepository.findChildsById(id);
+	public List<Product> findByParentId(Long id) {
+		return productRepository.findByParentId(id);
 	}
 
 	public ResponseEntity<Map<String, Object>> save(Product product) {

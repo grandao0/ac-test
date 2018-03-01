@@ -24,7 +24,7 @@ public class ImageResourceTest {
 	public void getAllImagesReturnsDataFromDatabase() throws Exception {
 		List<Image> images = imageResource.findAll();
 		assertFalse(images.isEmpty());
-		assertEquals(2, images.size());
+		assertEquals(7, images.size());
 	}
 
 	@Test
