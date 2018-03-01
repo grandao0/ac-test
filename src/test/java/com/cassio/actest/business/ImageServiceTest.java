@@ -12,32 +12,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cassio.actest.model.Image;
-import com.cassio.actest.web.ImageResource;
+import com.cassio.actest.service.ImageService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ImageResourceTest {
+public class ImageServiceTest {
 	@Autowired
-	private ImageResource imageResource;
+	private ImageService imageService;
 
 	@Test
 	public void getAllImagesReturnsDataFromDatabase() throws Exception {
-		List<Image> images = imageResource.findAll();
+		List<Image> images = imageService.findAll();
 		assertFalse(images.isEmpty());
 		assertEquals(7, images.size());
 	}
 
 	@Test
 	public void getImageById() throws Exception {
-		Image image = imageResource.findById(1L);
+		Image image = imageService.findById(1L);
 		assertFalse(image == null);
 		assertEquals("png", image.getImageType());
 	}
 
 	@Test
 	public void deleteImageById() throws Exception {
-		imageResource.deleteById(1L);
-		Image image = imageResource.findById(1L);
+		imageService.deleteById(1L);
+		Image image = imageService.findById(1L);
 		assertFalse(image != null);
 	}
 }
